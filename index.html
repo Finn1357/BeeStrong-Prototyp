@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HonigHaus – Reiner, natürlicher Honig aus unserer Region. Präsentation unserer Honigsorten und Herstellung.">
-    <title>HonigHaus – Reiner. Natürlicher. Honig.</title>
+    <meta name="description" content="BeeStrong – Reiner, natürlicher Honig aus unserer Region. Präsentation unserer Honigsorten und Herstellung.">
+    <title>BeeStrong – Reiner. Natürlicher. Honig.</title>
     <link rel="stylesheet" href="css/styles.css">
   </head>
 
@@ -13,14 +13,13 @@
 
     <header class="glass-nav" role="banner">
       <div class="container header-flex">
-        <h1><a href="#" class="logo-link" data-page="home">Honig<span class="haus">Haus</span></a></h1>
+        <h1><a href="#" class="logo-link" data-page="home">Bee<span class="haus">Strong</span></a></h1>
         <nav role="navigation" aria-label="Hauptnavigation">
           <a href="#" class="nav-link" data-page="home">Startseite</a>
-          <a href="#" class="nav-link" data-page="home">Produkte</a>
+          <a href="#produkte" class="nav-link">Produkte</a>
           <a href="#" class="nav-link" data-page="produktion">Produktion</a>
-          <a href="#" class="nav-link" data-page="home">Galerie</a>
+          <a href="#" class="nav-link" data-page="geschichte">Geschichte</a>
           <a href="#" class="nav-link" data-page="kontakt">Kontakt</a>
-          <a href="#" class="shop-icon" aria-label="Shop">🛒</a>
         </nav>
       </div>
     </header>
@@ -31,10 +30,10 @@
         <section class="hero" id="startseite" aria-labelledby="hero-title">
           <div class="hero-content">
             <h2 id="hero-title">Reiner.<br>Natürlicher. Honig.</h2>
-            <p>Von unserem Bienenstock zu Ihrem Zuhause</p>
+            <p>Von unserem Bienenstock in ihre Futterluke</p>
             <div class="hero-actions">
               <a class="btn" href="#produkte">Produkte entdecken →</a>
-              <a class="btn ghost" href="#produktion">Unsere Geschichte</a>
+              <a class="btn ghost" href="#" data-page="geschichte">Unsere Geschichte</a>
             </div>
           </div>
         </section>
@@ -297,8 +296,64 @@
         <div class="kontakt-back-btn">
           <a href="#" class="btn" data-page="home">← Zurück zur Startseite</a>
         </div>
+        <!-- Decorative honeycomb overlay (visual only) -->
+        <div class="honeycomb-overlay" aria-hidden="true"></div>
 
         <button class="floating-cta" aria-label="Nach oben scrollen" id="toTopKontakt">↑</button>
+      </div>
+
+      <!-- GESCHICHTE PAGE -->
+      <div id="geschichte-page" class="page">
+        <section class="geschichte-hero">
+          <div class="container">
+            <h2 class="produktion-title">Unsere Geschichte</h2>
+            <p class="produktion-intro">Von bescheidenen Anfängen bis zur heutigen Imkerei – unsere Geschichte ist geprägt von Tradition, Sorgfalt und einem tiefen Verständnis für Bienen und ihre Rolle in unserem Ökosystem.</p>
+          </div>
+        </section>
+
+        <section class="geschichte-timeline section">
+          <div class="container">
+            <article class="timeline-item">
+              <div class="timeline-badge">1905</div>
+              <div class="timeline-body">
+                <h3>Die Wurzeln</h3>
+                <p>Die Imkerei in unserer Familie begann im frühen 20. Jahrhundert – mit ein paar zur Handwerklichkeit gereichten Bienenstöcken und großen Träumen.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item reverse">
+              <div class="timeline-badge">1950</div>
+              <div class="timeline-body">
+                <h3>Familientradition</h3>
+                <p>Generation um Generation wurde Wissen weitergegeben: Techniken zur Pflege, Ernte und die Bedeutung lokaler Trachten.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-badge">1980</div>
+              <div class="timeline-body">
+                <h3>Modernisierung</h3>
+                <p>Wir führten hygienische Standards ein und modernisierten unseren Betrieb, ohne die traditionelle Handarbeit zu verlieren.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item reverse">
+              <div class="timeline-badge">2005</div>
+              <div class="timeline-body">
+                <h3>Regionalität</h3>
+                <p>Wir begannen, unsere Sorten klar nach Region und Saison zu kennzeichnen — damit Sie die Herkunft schmecken können.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-badge">Heute</div>
+              <div class="timeline-body">
+                <h3>Heute</h3>
+                <p>Unsere Imkerei verbindet traditionelle Werte mit nachhaltig gelebter Praxis — aufmerksam und naturverbunden.</p>
+              </div>
+            </article>
+          </div>
+        </section>
       </div>
     </main>
 
@@ -306,16 +361,16 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-col">
-            <h3>HonigHaus</h3>
+            <h3>BeeStrong</h3>
             <p>Seit über 20 Jahren produzieren wir mit Leidenschaft und Sorgfalt den besten Honig aus unserer Region. Natürlich, rein und voller Geschmack.</p>
           </div>
           <div class="footer-col">
             <h4>Schnellzugriff</h4>
             <ul>
               <li><a href="#" class="nav-link" data-page="home">Startseite</a></li>
-              <li><a href="#" class="nav-link" data-page="home">Produkte</a></li>
+              <li><a href="#produkte" class="nav-link" data-page="home">Produkte</a></li>
               <li><a href="#" class="nav-link" data-page="produktion">Produktion</a></li>
-              <li><a href="#" class="nav-link" data-page="home">Galerie</a></li>
+              <li><a href="#" class="nav-link" data-page="geschichte">Geschichte</a></li>
               <li><a href="#" class="nav-link" data-page="kontakt">Kontakt</a></li>
             </ul>
           </div>
@@ -332,7 +387,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 HonigHaus. Alle Rechte vorbehalten.</p>
+        <p>© 2025 BeeStrong. Alle Rechte vorbehalten.</p>
         <p>Diese Webseite wurde als Präsentationsbeispiel erstellt.</p>
       </div>
     </footer>

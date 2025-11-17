@@ -13,12 +13,61 @@ function navigateToPage(pageName) {
   }
 }
 
-// Click handlers for navigation links
+// Helper: smooth scroll to an element by id
+function scrollToId(id){
+  const target = document.getElementById(id);
+  if(target){
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // move focus for accessibility
+    target.setAttribute('tabindex','-1');
+    target.focus({ preventScroll: true });
+  }
+}
+
+// Global click handler: handle page navigation and in-page anchors
 document.addEventListener('click', (e) => {
-  if (e.target.hasAttribute('data-page')) {
+  const el = e.target.closest('a,button');
+  if(!el) return;
+
+  // If element has data-page, handle SPA navigation (and possibly section anchors)
+  if (el.hasAttribute('data-page')){
     e.preventDefault();
-    const pageName = e.target.getAttribute('data-page');
+    const pageName = el.getAttribute('data-page');
+    const href = el.getAttribute('href') || '';
+    const isSection = href.startsWith('#');
+
+    if(isSection){
+      const id = href.slice(1);
+      const currentPageId = document.querySelector('.page.active')?.id;
+      if(currentPageId === 'home-page'){
+        scrollToId(id);
+      } else {
+        navigateToPage(pageName);
+        // wait a moment for the page to become active then scroll
+        setTimeout(()=> scrollToId(id), 150);
+      }
+      return;
+    }
+
+    // Regular page navigation without scrolling
     navigateToPage(pageName);
+    return;
+  }
+
+  // If it's an in-page anchor (href="#...") without data-page
+  const href = el.getAttribute('href') || '';
+  if(href.startsWith('#')){
+    e.preventDefault();
+    const id = href.slice(1);
+    const currentPageId = document.querySelector('.page.active')?.id;
+    // If target is already on the active page, just scroll
+    if(currentPageId === 'home-page' || document.getElementById(id)?.closest('.page')?.classList.contains('active')){
+      scrollToId(id);
+    } else {
+      // If not on the correct page, navigate to home then scroll
+      navigateToPage('home');
+      setTimeout(()=> scrollToId(id), 150);
+    }
   }
 });
 
@@ -41,21 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Observe elements in all pages
   document.querySelectorAll(".card, .feature, .section").forEach((el)=>{
     observer.observe(el);
-  });
-});
-
-// Smooth scrolling for nav links
-document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', (e)=>{
-    e.preventDefault();
-    const id = a.getAttribute('href').slice(1);
-    const target = document.getElementById(id);
-    if(target){
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // move focus for accessibility
-      target.setAttribute('tabindex','-1');
-      target.focus({ preventScroll: true });
-    }
   });
 });
 
