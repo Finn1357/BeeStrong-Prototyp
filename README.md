@@ -1,4 +1,4 @@
-# Mein Honig – Präsentations-Website
+# BeeStrong – Präsentations-Website
 
 Diese statische Website zeigt eine Präsentation meines Honigs. Der Honig wird auf der Seite nicht verkauft, sondern nur vorgestellt.
 
