@@ -628,6 +628,14 @@ nav a.shop-icon {
   border-radius: 14px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 }
+
+/* Make images on the homepage appear as black placeholders */
+#home-page .card-media .image-wrap {
+  background: #000 !important;
+}
+#home-page .card-media img {
+  display: none !important;
+}
 .prod-badge {
   position: absolute;
   left: 18px;
