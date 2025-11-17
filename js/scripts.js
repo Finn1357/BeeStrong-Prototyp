@@ -1,16 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------------------------------
-    PAGE NAVIGATION (SPA-LOGIK)
+    PAGE NAVIGATION (SPA)
   ------------------------------------------------------------- */
-
   function navigateToPage(pageName) {
-    // Alle Seiten ausblenden
     document.querySelectorAll(".page").forEach((page) => {
       page.classList.remove("active");
     });
 
-    // Zielseite anzeigen
     const targetPage = document.getElementById(pageName + "-page");
     if (targetPage) {
       targetPage.classList.add("active");
@@ -19,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* -------------------------------------------------------------
-    SMOOTH SCROLL TO ELEMENT
+    SMOOTH SCROLL TO ANCHOR
   ------------------------------------------------------------- */
   function scrollToId(id) {
     const target = document.getElementById(id);
@@ -37,39 +34,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const el = e.target.closest("a, button");
     if (!el) return;
 
-    // SPA-Navigation
-    if (el.hasAttribute("data-page")) {
-      e.preventDefault();
-      const pageName = el.getAttribute("data-page");
-      const href = el.getAttribute("href") || "";
+    const href = el.getAttribute("href") || "";
+    const hasPage = el.hasAttribute("data-page");
 
-      // Falls es ein Anker ist (#...)
+    // SPA navigation
+    if (hasPage) {
+      e.preventDefault();  // stop browser navigation
+      const pageName = el.getAttribute("data-page");
+
       if (href.startsWith("#")) {
         const id = href.substring(1);
-
         navigateToPage(pageName);
         setTimeout(() => scrollToId(id), 200);
-        return;
+      } else {
+        navigateToPage(pageName);
       }
-
-      navigateToPage(pageName);
       return;
     }
 
-    // Normale interne Anker (#...)
-    const href = el.getAttribute("href") || "";
-    if (href.startsWith("#")) {
+    // Internal anchor
+    if (href.startsWith("#") && href.length > 1) {
       e.preventDefault();
       const id = href.substring(1);
 
       const activePage = document.querySelector(".page.active");
       const targetElement = document.getElementById(id);
 
-      // Wenn Element auf aktueller Seite ist:
       if (targetElement && targetElement.closest(".page") === activePage) {
         scrollToId(id);
       } else {
-        // erst zur Home-Seite → dann scrollen
         navigateToPage("home");
         setTimeout(() => scrollToId(id), 200);
       }
@@ -77,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* -------------------------------------------------------------
-    LOGO → zurück zur Startseite
+    LOGO
   ------------------------------------------------------------- */
   const logo = document.querySelector(".logo-link");
   if (logo) {
@@ -88,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* -------------------------------------------------------------
-    FADE-IN ANIMATION BEI SCROLL
+    FADE-IN ANIMATION
   ------------------------------------------------------------- */
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -103,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* -------------------------------------------------------------
-    SCROLL-TO-TOP BUTTONS
+    SCROLL TO TOP
   ------------------------------------------------------------- */
   const toTopButtons = [
     document.getElementById("toTop"),
@@ -117,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* -------------------------------------------------------------
-    ANZEIGE DES TO-TOP BUTTONS
+    SHOW/HIDE TO-TOP BUTTON
   ------------------------------------------------------------- */
   function updateToTopVisibility() {
     const activePage = document.querySelector(".page.active");
@@ -133,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Initial verstecken
   document.querySelectorAll(".floating-cta").forEach((btn) =>
     btn.classList.add("hidden")
   );
