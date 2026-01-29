@@ -1064,3 +1064,66 @@ h1{
 .card-geschenk:hover {
   transform: translateY(-5px);
 }
+
+/* Allgemeine Mobilanpassungen */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem; /* Innenabstand verringern */
+  }
+
+  /* Services Cards: von 3-Spalten auf 1-Spalte */
+  .services-cards, .eco-grid, .teambuilding-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .service-card, .eco-card, .teambuilding-item {
+    width: 100%;
+  }
+
+  /* Hero-Text zentrieren und kleiner machen */
+  .hero .overlay h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .hero .overlay p {
+    font-size: 1rem;
+  }
+
+  /* Bilder responsive machen */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Sicherheitsliste als Block */
+  .features.features--safety li {
+    display: block;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Nur Desktop-Hover */
+@media (min-width: 769px) {
+  .card-geschenk:hover::before {
+    opacity: 1;
+  }
+
+  .card-geschenk:hover h4,
+  .card-geschenk:hover p {
+    opacity: 0;
+  }
+}
+
+/* Mobile: Bild direkt sichtbar oder klickbar machen */
+@media (max-width: 768px) {
+  .card-geschenk::before {
+    opacity: 1; /* Bild direkt sichtbar */
+    transform: scale(1);
+  }
+  .card-geschenk h4, .card-geschenk p {
+    opacity: 1; /* Text bleibt sichtbar, falls nötig */
+  }
+}
