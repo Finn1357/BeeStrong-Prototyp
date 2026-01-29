@@ -964,3 +964,108 @@ h1{
 .teambuilding-item h3 {
   margin: 0.5rem 0 0.75rem;
 }
+
+.service-card {
+  position: relative;
+  padding: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff; /* Standardfarbe der Karte */
+  transition: all 0.5s ease;
+  color: #000;
+}
+
+/* Text bleibt sichtbar, aber leicht über dem Bild */
+.service-card h4,
+.service-card p {
+  position: relative;
+  z-index: 2;
+}
+
+/* Pseudo-Element für das Hover-Bild */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('honig.jpg'); /* Pfad zu deinem Bild */
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+/* Hover: Bild wird sichtbar */
+.service-card:hover::before {
+  opacity: 1;
+}
+
+/* Optional: Textfarbe invertieren oder Schatten für bessere Lesbarkeit */
+.service-card:hover h4,
+.service-card:hover p {
+  color: #000000;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+/* Mittlere Karte vorbereiten */
+.card-geschenk {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* Text über dem Hover-Bild */
+.card-geschenk h4,
+.card-geschenk p {
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.4s ease; /* Text wird ausgeblendet */
+}
+
+/* Hover-Bild als Pseudo-Element */
+.card-geschenk::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/Honig.png"); /* Bildpfad relativ zu CSS */
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 1;
+  transform: scale(1.1);
+}
+
+/* Optional: Overlay für dunklere Lesbarkeit – hier nicht nötig, da Text verschwindet */
+.card-geschenk::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+/* Hover-Effekt */
+.card-geschenk:hover::before {
+  opacity: 1;
+  transform: scale(1); /* leichtes Zoom-out für Effekt */
+}
+
+/* Text komplett ausblenden */
+.card-geschenk:hover h4,
+.card-geschenk:hover p {
+  opacity: 0;
+}
+
+/* Optional: kleine Lift-Animation */
+.card-geschenk:hover {
+  transform: translateY(-5px);
+}
