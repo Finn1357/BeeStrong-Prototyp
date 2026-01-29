@@ -705,3 +705,193 @@ h1{
   object-fit: cover;     /* schneidet oben & unten */
   object-position: center;
 }
+
+.service-base {
+  max-width: 600px;
+  margin-bottom: 4rem;
+}
+
+.clean-list li {
+  margin-bottom: 0.6rem;
+}
+
+.service-extras .lead {
+  max-width: 700px;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.extras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.extra h4 {
+  margin-bottom: 0.5rem;
+}
+
+.extra.highlight {
+  padding: 2rem;
+  background: rgba(0,0,0,0.03);
+  border-left: 4px solid #d4a017;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.service-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.service-box--highlight {
+  background: #f4efe8;
+}
+
+.service-list {
+  padding-left: 1.2rem;
+}
+
+.service-list li {
+  margin-bottom: 0.6rem;
+}
+
+.intro {
+  margin: 1rem 0 2rem;
+  font-size: 1rem;
+}
+
+.extras-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.extra-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.extra-card--featured {
+  border-left: 4px solid #d4a12f;
+  grid-column: span 2;
+}
+
+.extra-card h4 {
+  margin-top: 0;
+}
+
+/* Linke Seite leichter machen */
+.service-box {
+  padding: 1.8rem;
+}
+
+/* Zusatzleistungen luftiger */
+.extras-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 1.8rem;
+}
+
+/* HERO-Card */
+.extra-card--hero {
+  grid-column: span 2;
+  background: #fff;
+  border-left: 5px solid #d4a12f;
+  padding: 2rem;
+}
+
+/* Normale Cards etwas ruhiger */
+.extra-card {
+  background: rgba(255,255,255,0.85);
+}
+
+/* Typografie feinjustieren */
+.extra-card h4 {
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+.extra-card p {
+  line-height: 1.5;
+}
+
+/* Linke Spalte: KEINE Box mehr */
+.service-box--plain {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Liste links etwas klarer */
+.service-box--plain ul {
+  margin-top: 1rem;
+}
+
+.service-box--plain li {
+  margin-bottom: 0.7rem;
+}
+
+.service-box--plain h3 {
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #e0d6c8;
+  display: inline-block;
+}
+
+.services {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.services h2 {
+  margin-bottom: 3rem;
+}
+
+/* Leistungsumfang oben */
+.services-core {
+  max-width: 700px;
+  margin-bottom: 4rem;
+}
+
+.services-core ul {
+  margin-top: 1rem;
+}
+
+.services-core li {
+  margin-bottom: 0.75rem;
+}
+
+/* Zusatzleistungen */
+.services-extra-intro {
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+.services-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Cards */
+.service-card {
+  background: #fff;
+  padding: 1.6rem;
+  border-radius: 14px;
+}
+
+.service-card h4 {
+  margin-bottom: 0.5rem;
+}
+
+/* Highlight-Card */
+.service-card.highlight {
+  border-left: 4px solid #d8a31a;
+}
