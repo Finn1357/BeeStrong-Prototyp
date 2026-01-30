@@ -1127,3 +1127,198 @@ h1{
     opacity: 1; /* Text bleibt sichtbar, falls nötig */
   }
 }
+
+body {
+  background-color: hsl(0,0%,98%); /* statt #f9f9f9 */
+  color: hsl(0,0%,20%);
+}
+
+.beute-explainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin: 6rem auto;
+}
+
+.beute-visual {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.beute-visual img {
+  width: 100%;
+  max-width: 420px;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.hotspot {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffb703;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 0 6px rgba(255,183,3,0.25);
+}
+
+.hotspot::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 50%;
+  bottom: 140%;
+  transform: translateX(-50%);
+  background: #ffb703;
+  color: #000;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hotspot:hover::after,
+.hotspot:focus::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-6px);
+}
+
+.beute-info {
+  background: #fff;
+  padding: 2rem 2.4rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(30,20,10,0.04);
+  border-left: 6px solid var(--accent);
+}
+
+.beute-info h2 {
+  margin-top: 0.5rem;
+}
+
+.beute-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.beute-info li {
+  margin-bottom: 0.75rem;
+}
+
+/* Show tooltip also when JS toggles aria-expanded for mobile/touch */
+.honeycomb[aria-expanded="true"]::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-6px);
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .honeycomb::after {
+    left: 50%;
+    top: calc(100% + 12px);
+    bottom: auto;
+    transform: translateX(-50%) scale(0.98);
+  }
+  .honeycomb[aria-expanded="true"]::after {
+    transform: translateX(-50%) scale(1);
+  }
+  .beute-visual img { max-width: 540px; margin: 0 auto; }
+}
+
+
+@media (max-width: 768px) {
+  .beute-explainer {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .beute-visual img {
+    margin: 0 auto;
+  }
+
+  .hotspot::after {
+    bottom: auto;
+    top: 140%;
+  }
+}
+
+.honeycomb {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: #ffb703;
+  border: 3px solid rgba(255,183,3,0.5);
+  cursor: pointer;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  box-shadow: 0 0 0 4px rgba(255,183,3,0.2), inset 0 0 0 2px rgba(255,255,255,0.4);
+  animation: pulse 2.5s infinite;
+  transition: all 0.2s ease;
+  padding: 0;
+  font-size: 0;
+}
+
+.honeycomb:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  box-shadow: 0 0 0 8px rgba(255,183,3,0.3), inset 0 0 0 2px rgba(255,255,255,0.4);
+}
+
+.honeycomb:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255,183,3,0.6);
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(255,183,3,0);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255,183,3,0);
+    transform: scale(1);
+  }
+}
+
+.honeycomb::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 50%;
+  bottom: 150%;
+  transform: translateX(-50%);
+  background: #ffb703;
+  color: #000;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.honeycomb:hover::after,
+.honeycomb:focus::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-6px);
+}
+
+@media (max-width: 768px) {
+  .honeycomb {
+    animation-duration: 3s; /* ruhiger auf Handy */
+  }
+
+  .honeycomb::after {
+    bottom: auto;
+    top: 150%;
+  }
+}

@@ -287,6 +287,57 @@
   </div>
 </section>
 
+<section class="beute-explainer container">
+
+  <div class="beute-visual">
+    <img src="images/beute.png" alt="BeeStrong Bienenbeute">
+
+    <!-- Hotspots -->
+    <button
+      class="honeycomb"
+      style="top: 8%; left: 50%;"
+      data-text="Wetterfester Holzdeckel"
+      aria-label="Wetterfester Holzdeckel"
+      aria-expanded="false"
+      tabindex="0">
+    </button>
+
+    <button
+      class="honeycomb"
+      style="top: 45%; left: 50%;"
+      data-text="2× Honigraum für exzellenten Firmenhonig"
+      aria-label="2× Honigraum für exzellenten Firmenhonig"
+      aria-expanded="false"
+      tabindex="0">
+    </button>
+
+    <button
+      class="honeycomb"
+      style="top: 75%; left: 50%;"
+      data-text="Brutraum für starke Bienenvölker"
+      aria-label="Brutraum für starke Bienenvölker"
+      aria-expanded="false"
+      tabindex="0">
+    </button>
+  </div>
+
+  <div class="beute-info">
+    <small class="eyebrow">Unser System</small>
+    <h2>Wie sieht die „Mietwohnung“ aus?</h2>
+
+    <ul>
+      <li>Bis zu <strong>60.000 Honigbienen</strong> pro Beute</li>
+      <li>Nachhaltige Holzbehausung</li>
+      <li>3 Zargen (2× Honig, 1× Brut)</li>
+      <li>Farb- & Brandingoptionen auf Anfrage</li>
+    </ul>
+
+    <a href="#kontakt" class="btn primary">Jetzt Angebot anfordern</a>
+  </div>
+
+</section>
+ 
+
 <section class="section alt">
   <div class="container split">
     
@@ -388,6 +439,46 @@
   </div>
 </footer>
 
+
+<script>
+// Honeycomb hotspot toggle & keyboard accessibility
+(function(){
+  const buttons = document.querySelectorAll('.honeycomb');
+  if(!buttons.length) return;
+
+  buttons.forEach(btn=>{
+    // ensure role for AT
+    if(!btn.hasAttribute('role')) btn.setAttribute('role','button');
+
+    btn.addEventListener('click', e=>{
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      // collapse any other expanded
+      document.querySelectorAll('.honeycomb[aria-expanded="true"]').forEach(b=>{
+        if(b!==btn) b.setAttribute('aria-expanded','false');
+      });
+      btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    });
+
+    btn.addEventListener('keydown', e=>{
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        btn.click();
+      }
+      if(e.key === 'Escape') btn.setAttribute('aria-expanded','false');
+    });
+
+    // close on focusout for keyboard users
+    btn.addEventListener('blur', ()=> btn.setAttribute('aria-expanded','false'));
+  });
+
+  // close on outside click/tap
+  document.addEventListener('click', e=>{
+    if(!e.target.closest('.honeycomb')){
+      document.querySelectorAll('.honeycomb[aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
